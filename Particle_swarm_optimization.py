@@ -6,7 +6,6 @@ import os
 import seaborn as sns
 import matplotlib.pyplot as plt
 from matplotlib import animation, rc
-%matplotlib inline
 
 from matplotlib.animation import FuncAnimation
 
@@ -17,7 +16,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score, m
 
 ##################################### Data ##########################################################
 
-df = pd.read_csv("C:\\Users\\KAMLESH GAUTAM\Desktop\\Hardness2.csv")
+df = pd.read_csv("Hardness2.csv")
  ############################################ Data scaling############################################
 df2 = df.copy()
 df2['HV'] = df2['HV']/1000
@@ -136,10 +135,10 @@ ax.plot_wireframe(X, Y, Z, color='r', linewidth=0.2)
 images = []
 
 # Add plot for each generation (within the generation for-loop)
-   image = ax.scatter3D([particles[n][0] for n in range(population)],
+image = ax.scatter3D([particles[n][0] for n in range(population)],
                          [particles[n][1] for n in range(population)],
                          [fitness_function(particles[n][0],particles[n][1]) for n in range(population)], c='b')
-    images.append([image])
+images.append([image])
 
 # Generate the animation image and save
 animated_image = animation.ArtistAnimation(fig, images)
